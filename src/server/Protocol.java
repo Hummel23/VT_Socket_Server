@@ -1,44 +1,31 @@
-import java.util.StringTokenizer;
+package server;
+
+import commands.Adder;
+import commands.Divider;
+import commands.Multiplier;
 
 public class Protocol {
 
-	private static Protocol instance;
 
-	//private constructor to prevent instantion
-	private Protocol(){
-	}
 
-	public static Protocol getInstance(){
-		if (instance == null){
-			instance = new Protocol();
+	public String process(String msg){
+
+		String arr[] = msg.split(" ");
+		String command = arr[0].trim().toLowerCase();
+
+		if(command.equals("add")){
+			Adder adder = new Adder();
+			return adder.process(arr);
 		}
-		return instance;
-	}
-	
-	
-	public String process(String msg) {
-		String result;
-		
-		if (msg == "") {
-			result = "The input was invalid, please try again.";
-		}else{
-			String[] input = new String[3];
-			StringTokenizer t = new StringTokenizer(msg);
-			String word ="";
-			int counter = 0;
-			while(t.hasMoreTokens())
-			{
-			    word = t.nextToken();
-			    input[counter]=word;
-			    counter++;
-			}
-			
+		if(command.equals("multiply")){
+			Multiplier multiplier = new Multiplier();
+			return multiplier.process(arr);
 		}
-		
-		
-		
-		
-		return result;
+		else{
+			Divider divider = new Divider();
+			return divider.process(arr);
+		}
+
 	}
 
 }

@@ -1,9 +1,9 @@
+package server;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
 public class Server {
 	
 	private static int SERVER_SOCKET = 8080;
@@ -11,6 +11,7 @@ public class Server {
 	public static void main(String[] args) {
 		BufferedReader in;
 		PrintWriter out;
+		Protocol protocol;
 		
 		try{
 			//start server
@@ -27,10 +28,14 @@ public class Server {
 			String msg = in.readLine();
 			
 			
+			protocol = new Protocol();
+			String result = protocol.process(msg);
+
 			
 			//send data to Client
 			out = new PrintWriter(client.getOutputStream(), true);
-			out.println("world");			
+			out.println(result);			
+			
 			
 		}catch (Exception e) {
 			System.out.println("Server is down.");
