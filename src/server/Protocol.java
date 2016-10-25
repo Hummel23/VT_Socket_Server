@@ -3,9 +3,18 @@ package server;
 import commands.Calculation;
 import factory.CommandFactory;
 
+// Singleton
 public class Protocol {
-
-
+	private static Protocol protocol;
+	
+	private Protocol(){}
+	
+	public static Protocol getInstance(){
+		if(protocol==null){
+			return protocol = new Protocol();
+		}
+		return protocol;
+	}
 
 	public String process(String msg){
 		//split the String into an array of Strings

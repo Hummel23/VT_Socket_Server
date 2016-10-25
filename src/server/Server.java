@@ -12,8 +12,8 @@ public class Server {
 	public static void main(String[] args) {
 		BufferedReader in;
 		PrintWriter out;
-		Protocol protocol;
 		boolean isOnline = true;
+		Protocol protocol = Protocol.getInstance();
 		
 		try{
 			//start server
@@ -30,7 +30,6 @@ public class Server {
 			String msg = in.readLine();
 			
 			// process Client input
-			protocol = new Protocol();
 			String result = protocol.process(msg);
 			
 			//send processed data to Client
