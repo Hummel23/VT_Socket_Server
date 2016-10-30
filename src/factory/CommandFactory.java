@@ -8,17 +8,14 @@ import commands.WrongCommand;
 
 public class CommandFactory {
 	
-	public static final String MULTIPLY = "multiply";
-	public static final String DIVIDE = "divide";
-	public static final String ADD = "add";
 	
 	public Calculation createCalculation(String command){
 		switch (command) {
-		case ADD:
+		case "add":
 			return new Adder();		
-		case MULTIPLY:
+		case "multiply":
 			return new Multiplier();
-		case DIVIDE:
+		case "divide":
 			return new Divider();
 		default:
 			return new WrongCommand();
