@@ -43,7 +43,6 @@ public class ClientHandler implements Runnable {
 
 			}
 		}
-		//TODO find out why this line is not printed. 
 		System.out.println("Connection to client was terminated.");
 	}
 
